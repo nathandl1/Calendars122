@@ -20,7 +20,7 @@ public class Calendar implements IsEditable, IsVisible{
         isPublic=true;
     }
     public void display() {
-        System.out.print(calendarType);
+        System.out.println(name);
     }
     void togglePublic(){
         isPublic = !isPublic;
