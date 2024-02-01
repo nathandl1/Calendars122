@@ -21,11 +21,11 @@ public class Calendar implements IsEditable, IsVisible{
     }
     public void display() {
         System.out.println(name);
+        System.out.println("Events: " +events.size());
+        for (Event event : events){
+            event.display();
+        }
     }
-    void togglePublic(){
-        isPublic = !isPublic;
-    }
-
     public void edit() {
         System.out.println("edit");
     }

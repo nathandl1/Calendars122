@@ -10,7 +10,7 @@ public class Main {
         System.out.println("1. View owned calendars");
         System.out.println("2. Display all Owned Calendars");
         System.out.println("3. Create Calendar");
-        System.out.println("4. Select Calendar");
+        System.out.println("4. Change Calendar");
         System.out.println("5. Change User");
         System.out.println("6. Create Event for " + screen.currentCalendar.name + " Calendar");
         System.out.println("Enter exit to end program.");
@@ -28,6 +28,7 @@ public class Main {
     static void displayOwnedCal(){
         for (Calendar disCal : screen.currentUser.ownedCalendars){
             disCal.display();
+            System.out.println("----------------");
         }
     }
 
@@ -37,9 +38,22 @@ public class Main {
         }
     }
 
-    //static void createCalendar(Scanner scanner){
-    //
-    //}
+    private static void changeCalendar() {
+        boolean flag = false;
+        System.out.println("Enter the name of the calendar: ");
+        String ans = myObj.nextLine();
+        for (Calendar tempCal : screen.currentUser.ownedCalendars){
+            if (tempCal.name.equals(ans)){
+                flag = true;
+                screen.currentCalendar = tempCal;
+                System.out.println("Current Calendar changed to: " + screen.currentCalendar.name);
+                break;
+            }
+        }
+        if (!flag){
+            System.out.println("Cannot find " + ans + " in User's Calendars");
+        }
+    }
 
     public static void main(String[] args) {
         System.out.println("Test Run?");
@@ -52,14 +66,17 @@ public class Main {
             while (!choice.equals("exit")){
                 choice = getChoice();
                 switch(choice){
-                    case "1": //view owned Calendars
+                    case "1": // view calendars owned by current User
                         viewOwnedCalendars();
                         break;
-                    case "2":
+                    case "2": // runs .display on all owned calendars
                         displayOwnedCal();
                         break;
-                    case "3": //createCalendar
+                    case "3": // creates a calendar
                         createCalendar();
+                        break;
+                    case "4": // select calendar
+                        changeCalendar();
                         break;
                     case "exit":
                         break;
