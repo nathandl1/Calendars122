@@ -12,12 +12,12 @@ public class Calendar implements IsEditable, IsVisible{
     Set<User> canEdit = new HashSet<>();
     Date currentDate;
     //view
-    Calendar(String newCalType, String newName, User firstUser){
+    Calendar(String newCalType, String newName, User firstUser, boolean privacy){
         name=newName;
         calendarType=newCalType;
         canEdit.add(firstUser);
         canView.add(firstUser);
-        isPublic=true;
+        isPublic=privacy;
     }
     public void display() {
         System.out.println(name);
