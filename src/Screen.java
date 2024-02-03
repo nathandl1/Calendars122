@@ -7,7 +7,7 @@ public class Screen {
     Set<Calendar> calendars = new HashSet<Calendar>();
     Screen(User firstUser){
         currentUser=firstUser;
-        currentCalendar = new Calendar("Gregorian", "Default", firstUser);
+        currentCalendar = new Calendar("Gregorian", "Default", firstUser, true);
         currentUser.ownedCalendars.add(currentCalendar);
         users.add(firstUser);
     }
@@ -18,10 +18,14 @@ public class Screen {
             System.out.println("User already exists!");
         }
     }
-    void createCalendar(String calType, String newName){ //new
-        Calendar tempCalendar = new Calendar(calType, newName, currentUser);
-        boolean add = calendars.add(tempCalendar);
+    void createCalendar(String calType, String newName, boolean privacy){ //new
+        Calendar tempCalendar = new Calendar(calType, newName, currentUser, privacy);
+        calendars.add(tempCalendar);
         currentUser.ownedCalendars.add(tempCalendar);
+    }
+    void deleteCalendar(Calendar calPtr){
+        currentUser.ownedCalendars.remove(calPtr);
+        calendars.remove(calPtr);
     }
     void changeUser(String username){
         System.out.println("0");
