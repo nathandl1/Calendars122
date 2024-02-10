@@ -5,7 +5,6 @@ public class Date implements IsEditable, IsVisible {
     int month;
     int year;
     Scanner myObj = new Scanner(System.in);
-
     Date(int newMonth, int newDay, int newYear){
         month = newMonth;
         day = newDay;

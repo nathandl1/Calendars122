@@ -1,26 +1,16 @@
 import java.util.Scanner;
-import java.util.Set;
 public class Event implements IsEditable, IsVisible{
     String name; //new
-    boolean isPublic;
     Date date;
     Time startTime;
     Time endTime;
-    //Set<Calendar> canView;
-    //Set<Calendar> canEdit;
     private final Scanner myObj = new Scanner(System.in);
-
     Event(String newName, Date newDate, Time start, Time end){
         name=newName;
         date=newDate;
         startTime=start;
         endTime=end;
     }
-
-    void togglePublic(){
-        isPublic = !isPublic;
-    }
-
     @Override
     public void edit() {
         String ans = "0";
